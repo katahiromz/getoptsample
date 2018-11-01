@@ -30,7 +30,7 @@ enum RET
 // show version info
 void show_version(void)
 {
-    printf("getoptsample version 0.3\n");
+    printf("getoptsample version 0.4\n");
 }
 
 // show help
@@ -106,7 +106,7 @@ int parse_command_line(int argc, char **argv)
                 fprintf(stderr, "ERROR: invalid option.\n");
                 break;
             default:
-                fprintf(stderr, "ERROR: invalid option '%c'.\n", optopt);
+                fprintf(stderr, "ERROR: invalid option '-%c'.\n", optopt);
                 break;
             }
             return RET_INVALID_ARGUMENT;

@@ -32,15 +32,15 @@ endif()
 enable_language(C)
 #enable_language(RC)
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+if (CMAKE_CXX_COMPILER_ID STREQUAL Clang)
     # using Clang
     set(CMAKE_C_FLAGS "-static")
     set(CMAKE_CXX_FLAGS "-static")
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL GNU)
     # using GCC
     set(CMAKE_C_FLAGS "-static -static-libgcc -static-libstdc++")
     set(CMAKE_CXX_FLAGS "-static -static-libgcc -static-libstdc++")
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL MSVC)
     # replace "/MD" with "/MT" (building without runtime DLLs)
     set(CompilerFlags
         CMAKE_C_FLAGS
