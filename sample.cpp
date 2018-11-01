@@ -61,7 +61,7 @@ struct option opts[] =
 // external symbols for getopt_long
 extern "C"
 {
-    extern char* optarg;
+    extern char *optarg;
     extern int optind, opterr, optopt;
 }
 
