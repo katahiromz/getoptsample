@@ -101,15 +101,12 @@ int parse_command_line(int argc, char **argv)
             case 'i':
             case 'o':
                 fprintf(stderr, "ERROR: option '-%c' requires a parameter.\n", optopt);
-                show_help();
                 break;
             case 0:
-                fprintf(stderr, "ERROR: invalid argument.\n");
-                show_help();
+                fprintf(stderr, "ERROR: invalid option.\n");
                 break;
             default:
                 fprintf(stderr, "ERROR: invalid option '%c'.\n", optopt);
-                show_help();
                 break;
             }
             return RET_INVALID_ARGUMENT;
