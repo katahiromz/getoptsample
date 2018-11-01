@@ -6,9 +6,9 @@
 #include <string>       // for std::string
 #include <vector>       // for std::vector
 #ifdef USE_GETOPT_PORT
-    #include <getopt.h> // for getopt_long
+    #include "getopt.h" // for portable getopt_long
 #else
-    #include "getopt.h" // for getopt_long
+    #include <getopt.h> // for GNU getopt_long
 #endif
 
 using std::printf;
