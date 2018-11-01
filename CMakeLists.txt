@@ -59,7 +59,7 @@ endif()
 ##############################################################################
 
 # USE_GETOPT_PORT option
-option(USE_GETOPT_PORT "Use Kim Grasman's getopt_port" OFF)
+option(USE_GETOPT_PORT "Use portable getopt" OFF)
 
 # check getopt_long function
 include(CheckIncludeFile)

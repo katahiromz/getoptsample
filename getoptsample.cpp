@@ -30,7 +30,7 @@ enum RET
 // show version info
 void show_version(void)
 {
-    printf("getoptsample version 0.2\n");
+    printf("getoptsample version 0.3\n");
 }
 
 // show help
