@@ -1,4 +1,4 @@
-// getoptsample.cpp
+// getoptsample.cpp --- C++ getopt_long sample
 // Copyright (C) 2018 Katayama Hirofumi MZ <katayama.hirofumi.mz@gmail.com>.
 // This file is public domain software.
 
