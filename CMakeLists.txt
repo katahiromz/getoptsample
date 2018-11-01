@@ -84,8 +84,6 @@ else()
     # we use getopt_port
     add_definitions(-DUSE_GETOPT_PORT=1)
     message(STATUS "We use getopt_port")
-
-    # use getopt_port
     include_directories(getopt_port)
 
     # executable
