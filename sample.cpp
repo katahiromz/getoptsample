@@ -73,6 +73,12 @@ int parse_command_line(int argc, char **argv)
 
     opterr = 0;  /* NOTE: opterr == 1 is not compatible to getopt_port */
 
+    if (argc <= 1)
+    {
+        fprintf(stderr, "ERROR: no arguments. try with --help.\n");
+        return RET_INVALID_ARGUMENT;
+    }
+
     while ((opt = getopt_long(argc, argv, "hi:o:", opts, &opt_index)) != -1)
     {
         switch (opt)
