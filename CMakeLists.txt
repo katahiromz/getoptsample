@@ -64,7 +64,16 @@ include(CheckSymbolExists)
 check_include_file("getopt.h" HAVE_GETOPT_H)
 check_symbol_exists("getopt_long" "getopt.h" HAVE_GETOPT_LONG)
 
+if (HAVE_GETOPT_H)
+    add_definitions(-DHAVE_GETOPT_H=1)
+endif()
 if (HAVE_GETOPT_LONG)
+    add_definitions(-DHAVE_GETOPT_LONG=1)
+endif()
+
+if (HAVE_GETOPT_LONG)
+
+
     # executable
     add_executable(getoptsample getoptsample.cpp)
 else()
