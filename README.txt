@@ -1,1 +1,1 @@
-Use Kim Grasman's getopt_port: https://github.com/kimgr/getopt_port
+This is a sample code for GNU getopt_long function.
