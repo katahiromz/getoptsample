@@ -58,6 +58,9 @@ endif()
 
 ##############################################################################
 
+# USE_GETOPT_PORT option
+option(USE_GETOPT_PORT "Use Kim Grasman's getopt_port" OFF)
+
 # check getopt_long function
 include(CheckIncludeFile)
 include(CheckSymbolExists)
@@ -70,8 +73,12 @@ endif()
 if (HAVE_GETOPT_LONG)
     add_definitions(-DHAVE_GETOPT_LONG=1)
 endif()
+if (USE_GETOPT_PORT)
+    add_definitions(-DUSE_GETOPT_PORT)
+    message(STATUS "Enabled getopt_long")
+endif()
 
-if (HAVE_GETOPT_LONG)
+if (HAVE_GETOPT_LONG AND NOT USE_GETOPT_PORT)
     # executable
     add_executable(getoptsample getoptsample.cpp)
 else()
