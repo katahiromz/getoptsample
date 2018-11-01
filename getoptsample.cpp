@@ -30,7 +30,7 @@ enum RET
 // show version info
 void show_version(void)
 {
-    printf("getoptsample version 0.0\n");
+    printf("getoptsample version 0.1\n");
 }
 
 // show help
@@ -69,6 +69,8 @@ int parse_command_line(int argc, char **argv)
     int opt, opt_index;
     std::string arg;
 
+    opterr = 0;  /* NOTE: opterr == 1 is not compatible to getopt_port */
+
     while ((opt = getopt_long(argc, argv, "hi:o:", opts, &opt_index)) != -1)
     {
         switch (opt)
@@ -92,7 +94,22 @@ int parse_command_line(int argc, char **argv)
             g_output_file = optarg;
             break;
         case '?':
-            /* getopt_long already printed an error message. */
+            switch (optopt)
+            {
+            case 0:
+                fprintf(stderr, "ERROR: invalid parameter.\n");
+                show_help();
+                break;
+            case 'i':
+            case 'o':
+                fprintf(stderr, "ERROR: option '-%c' requires a parameter.\n", optopt);
+                show_help();
+                break;
+            default:
+                fprintf(stderr, "ERROR: unknown option '-%c'.\n", optopt);
+                show_help();
+                break;
+            }
             return RET_INVALID_ARGUMENT;
         default:
             break;
