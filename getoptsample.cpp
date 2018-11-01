@@ -37,6 +37,7 @@ void show_version(void)
 void show_help(void)
 {
     printf("Usage: getoptsample [options]...\n");
+    printf("\n");
     printf("Options:\n");
     printf("--help              Show this help\n");
     printf("--version           Show version info\n");
@@ -94,25 +95,24 @@ int parse_command_line(int argc, char **argv)
             g_output_file = optarg;
             break;
         case '?':
+        default:
             switch (optopt)
             {
-            case 0:
-                fprintf(stderr, "ERROR: invalid parameter.\n");
-                show_help();
-                break;
             case 'i':
             case 'o':
                 fprintf(stderr, "ERROR: option '-%c' requires a parameter.\n", optopt);
                 show_help();
                 break;
+            case 0:
+                fprintf(stderr, "ERROR: invalid argument.\n");
+                show_help();
+                break;
             default:
-                fprintf(stderr, "ERROR: unknown option '-%c'.\n", optopt);
+                fprintf(stderr, "ERROR: invalid option '%c'.\n", optopt);
                 show_help();
                 break;
             }
             return RET_INVALID_ARGUMENT;
-        default:
-            break;
         }
     }
 
