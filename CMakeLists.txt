@@ -79,7 +79,7 @@ if (HAVE_GETOPT_LONG AND NOT USE_GETOPT_PORT)
     message(STATUS "We don't use getopt_port")
 
     # executable
-    add_executable(getoptsample getoptsample.cpp)
+    add_executable(sample sample.cpp)
 else()
     # we use getopt_port
     add_definitions(-DUSE_GETOPT_PORT=1)
@@ -87,10 +87,10 @@ else()
     include_directories(getopt_port)
 
     # executable
-    add_executable(getoptsample getoptsample.cpp getopt_port/getopt.c)
+    add_executable(sample sample.cpp getopt_port/getopt.c)
 endif()
 
 # link
-target_link_libraries(getoptsample)
+target_link_libraries(sample)
 
 ##############################################################################
