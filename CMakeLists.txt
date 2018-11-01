@@ -72,8 +72,6 @@ if (HAVE_GETOPT_LONG)
 endif()
 
 if (HAVE_GETOPT_LONG)
-
-
     # executable
     add_executable(getoptsample getoptsample.cpp)
 else()
