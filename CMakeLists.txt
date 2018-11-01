@@ -63,15 +63,17 @@ include(CheckIncludeFile)
 include(CheckSymbolExists)
 check_include_file("getopt.h" HAVE_GETOPT_H)
 check_symbol_exists("getopt_long" "getopt.h" HAVE_GETOPT_LONG)
-if (NOT ${HAVE_GETOPT_H})
-    message(FATAL_ERROR "There is no <getopt.h> header.")
-endif()
-if (NOT ${HAVE_GETOPT_LONG})
-    message(FATAL_ERROR "There is no <getopt.h> getopt_long function.")
-endif()
 
-# executable
-add_executable(getoptsample getoptsample.cpp)
+if (HAVE_GETOPT_LONG)
+    # executable
+    add_executable(getoptsample getoptsample.cpp)
+else()
+    # use getopt_port
+    include_directories(getopt_port)
+
+    # executable
+    add_executable(getoptsample getoptsample.cpp getopt_port/getopt.c)
+endif()
 
 # link
 target_link_libraries(getoptsample)

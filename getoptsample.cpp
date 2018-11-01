@@ -5,7 +5,11 @@
 #include <cstdio>       // standard C I/O
 #include <string>       // for std::string
 #include <vector>       // for std::vector
-#include "getopt.h"     // for getopt_long
+#ifdef HAVE_GETOPT_H
+    #include <getopt.h> // for getopt_long
+#else
+    #include "getopt.h" // for getopt_long
+#endif
 
 using std::printf;
 using std::fprintf;
@@ -52,17 +56,20 @@ struct option opts[] =
     { NULL, 0, NULL, 0 },
 };
 
+// external symbols for getopt_long
+extern "C"
+{
+    extern char* optarg;
+    extern int optind, opterr, optopt;
+}
+
 // parse the command line
 int parse_command_line(int argc, char **argv)
 {
-    // external symbols for getopt_long
-    extern char* optarg;
-    extern int optind, opterr, optopt;
-
     int opt, opt_index;
     std::string arg;
 
-    while ((opt = getopt_long(argc, argv, "hvi:o:", opts, &opt_index)) != -1)
+    while ((opt = getopt_long(argc, argv, "hi:o:", opts, &opt_index)) != -1)
     {
         switch (opt)
         {
@@ -87,6 +94,8 @@ int parse_command_line(int argc, char **argv)
         case '?':
             /* getopt_long already printed an error message. */
             return RET_INVALID_ARGUMENT;
+        default:
+            break;
         }
     }
 
