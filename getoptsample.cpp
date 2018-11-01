@@ -5,7 +5,7 @@
 #include <cstdio>       // standard C I/O
 #include <string>       // for std::string
 #include <vector>       // for std::vector
-#ifdef HAVE_GETOPT_H
+#ifdef USE_GETOPT_PORT
     #include <getopt.h> // for getopt_long
 #else
     #include "getopt.h" // for getopt_long

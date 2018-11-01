@@ -73,9 +73,6 @@ endif()
 if (HAVE_GETOPT_LONG)
     add_definitions(-DHAVE_GETOPT_LONG=1)
 endif()
-if (USE_GETOPT_PORT)
-    add_definitions(-DUSE_GETOPT_PORT)
-endif()
 
 if (HAVE_GETOPT_LONG AND NOT USE_GETOPT_PORT)
     # we don't use getopt_port
@@ -85,6 +82,7 @@ if (HAVE_GETOPT_LONG AND NOT USE_GETOPT_PORT)
     add_executable(getoptsample getoptsample.cpp)
 else()
     # we use getopt_port
+    add_definitions(-DUSE_GETOPT_PORT=1)
     message(STATUS "We use getopt_port")
 
     # use getopt_port
