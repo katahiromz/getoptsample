@@ -36,7 +36,8 @@ void show_version(void)
 // show help
 void show_help(void)
 {
-    printf("Usage: getoptsample [options]...\n");
+    printf("getoptsample --- sample codes for GNU getopt_long\n");
+    printf("Usage: sample [options]...\n");
     printf("\n");
     printf("Options:\n");
     printf("--help              Show this help\n");
