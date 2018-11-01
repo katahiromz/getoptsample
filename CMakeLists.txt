@@ -75,7 +75,7 @@ if (HAVE_GETOPT_LONG)
 endif()
 if (USE_GETOPT_PORT)
     add_definitions(-DUSE_GETOPT_PORT)
-    message(STATUS "Enabled getopt_long")
+    message(STATUS "Enabled getopt_port")
 endif()
 
 if (HAVE_GETOPT_LONG AND NOT USE_GETOPT_PORT)
